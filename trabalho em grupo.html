@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climasj</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://img.pikbest.com/back_our/20210107/bg/31215b00ff5e7.png!w700wp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            background-color: #2c3e50;
+
+            /* Animação do fundo */
+            animation: moveBackground 20s linear infinite;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        form {
+            background-image: url('https://i.pinimg.com/474x/46/79/9f/46799f265347c695d6152b1ba6e4137c.jpg');
+            background-size: cover; 
+            background-position: center; 
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 90%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        form:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-style: italic; 
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #800080;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"], input[type="password"], input[type="email"], input[type="radio"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        input[type="submit"], input[type="button"] {
+            background-color: #007bff; 
+            color: #fff;
+            border: none;
+            padding: 10px 12px; 
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px; 
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            width: 48%; 
+            margin-right: 4%; 
+        }
+
+        input[type="button"] {
+            background-color: #dc3545;
+        }
+
+        input[type="submit"]:hover, input[type="button"]:hover {
+            background-color: #0056b3; 
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="submit"]:focus-visible, input[type="button"]:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 4px;
+        }
+
+        .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #fff;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .eye-icon:hover {
+            color: #007bff;
+        }
+
+        .radio-group {
+            margin-bottom: 15px;
+        }
+
+        .radio-group label {
+            display: inline;
+            margin-right: 10px;
+            font-weight: normal;
+            color: #fff;
+        }
+
+        .error {
+            color: #ff0000;
+            font-size: 16px;
+            margin-top: -5px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .success {
+            color: #28a745;
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .loader {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .strength-indicator {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #fff; 
+        }
+
+        .strength-weak {
+            color: #ff0000;
+        }
+
+        .strength-moderate {
+            color: #ffc107;
+        }
+
+        .strength-strong {
+            color: #28a745;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            input[type="submit"], input[type="button"] {
+                font-size: 14px;
+                width: 100%; 
+                margin-right: 0; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm" aria-labelledby="formTitle">
+        <h1 id="formTitle">Jclimas</h1>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required aria-describedby="emailError" aria-invalid="false">
+        <div class="error" id="emailError" role="alert"></div>
+
+        <label for="fname">Primeiro Nome:</label>
+        <input type="text" id="fname" name="fname" required aria-describedby="fnameError" aria-invalid="false">
+        <div class="error" id="fnameError" role="alert"></div>
+
+        <label for="lname">Senha:</label>
+        <div class="input-container">
+            <input type="password" id="lname" name="lname" required aria-describedby="lnameError passwordStrength" aria-invalid="false">
+            <i class="fas fa-eye eye-icon" id="togglePassword" aria-label="Alternar visibilidade da senha"></i>
+        </div>
+        <div class="strength-indicator" id="passwordStrength" role="alert"></div>
+        <div class="error" id="lnameError" role="alert"></div>
+
+        <div style="display: flex; justify-content: space-between;">
+            <input type="submit" value="Registre-se">
+            <input type="button" value="Limpar Dados" id="clearStorage">
+        </div>
+
+        <!-- Loader element -->
+        <div class="loader" id="loader" role="alert"><i class="fas fa-spinner fa-spin"></i> Enviando...</div>
+
+        <div class="success" id="successMessage" role="alert"></div>
+    </form>
+
+    <script>
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('lname');
+
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.type === 'password' ? 'text' : 'password';
+            passwordInput.type = type;
+            togglePassword.classList.toggle('fa-eye');
+            togglePassword.classList.toggle('fa-eye-slash');
+        });
+
+        const commonPasswords = ['123456', 'password', '123456789', '12345678', '12345', '123123', 'qwerty', 'abc123', 'password1', 'letmein'];
+
+        const validateInput = (input, errorElement, pattern) => {
+            if (!input.value.trim()) {
+                errorElement.textContent = 'Este campo é obrigatório.';
+                input.setAttribute('aria-invalid', 'true');
+                return false;
+            }
+            if (pattern && !pattern.test(input.value.trim())) {
+                errorElement.textContent = 'Formato inválido.';
+                input.setAttribute('aria-invalid', 'true');
+                return false;
+            }
+            errorElement.textContent = '';
+            input.setAttribute('aria-invalid', 'false');
+            return true;
+        };
+
+        const checkPasswordStrength = (password) => {
+            let strength = "Fraca";
+            const lengthCriteria = password.length >= 8;
+            const numberCriteria = /\d/.test(password);
+            const letterCriteria = /[a-zA-Z]/.test(password);
+            const specialCharCriteria = /[\W_]/.test(password);
+
+            if (lengthCriteria && numberCriteria && letterCriteria && specialCharCriteria) {
+                strength = "Forte";
+                document.getElementById('passwordStrength').className = 'strength-strong';
+            } else if (lengthCriteria && (numberCriteria || letterCriteria)) {
+                strength = "Moderada";
+                document.getElementById('passwordStrength').className = 'strength-moderate';
+            } else {
+                document.getElementById('passwordStrength').className = 'strength-weak';
+            }
+
+            document.getElementById('passwordStrength').textContent = `Força da senha: ${strength}`;
+        };
+
+        const hashPassword = async (password) => {
+            const encoder = new TextEncoder();
+            const data = encoder.encode(password);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+        };
+
+        document.getElementById('myForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach(error => error.textContent = '');
+            document.getElementById('successMessage').textContent = '';
+            document.getElementById('loader').style.display = 'none';  // Garantir que o loader comece oculto
+
+            const email = document.getElementById('email');
+            const fname = document.getElementById('fname');
+            const lname = document.getElementById('lname');
+            let valid = true;
+
+            valid &= validateInput(email, document.getElementById('emailError'), /^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+            valid &= validateInput(fname, document.getElementById('fnameError'));
+
+            // Validar senha não comum e força da senha
+            if (!commonPasswords.includes(lname.value.trim()) && validateInput(lname, document.getElementById('lnameError'), /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{8,}$/)) {
+                valid = true;
+            } else {
+                valid = false;
+                document.getElementById('lnameError').textContent = "A senha é muito comum ou não atende aos critérios de segurança.";
+            }
+
+            if (valid) {
+                document.getElementById('loader').style.display = 'block';  // Exibir o loader
+
+                // Hash da senha
+                const hashedPassword = await hashPassword(lname.value.trim());
+
+                setTimeout(() => {
+                    localStorage.setItem('email', email.value.trim());
+                    localStorage.setItem('fname', fname.value.trim());
+                    localStorage.setItem('lname', hashedPassword);  // Salvando o hash da senha
+                    document.getElementById('successMessage').textContent = 'Registro realizado com sucesso!';
+                    document.getElementById('loader').style.display = 'none';  // Esconder o loader
+
+                    setTimeout(() => {
+                        // Limpar os campos após o envio, para começar com campos vazios
+                        document.getElementById('email').value = '';
+                        document.getElementById('fname').value = '';
+                        document.getElementById('lname').value = '';
+                        localStorage.clear();  // Limpar os dados armazenados no localStorage
+                        window.location.href = 'nova_pagina.html';  // Redirecionar para outra página após o envio
+                    }, 2000);  // Simulando o tempo de processamento
+                }, 2000);
+            }
+        });
+
+        passwordInput.addEventListener('input', () => {
+            checkPasswordStrength(passwordInput.value);
+            validateInput(passwordInput, document.getElementById('lnameError'), /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[\W_]).{8,}$/);
+        });
+
+        window.onload = function() {
+            // Preencher os campos com valores vazios ao carregar a página
+            document.getElementById('email').value = '';
+            document.getElementById('fname').value = '';
+            document.getElementById('lname').value = '';
+        };
+
+        document.getElementById('clearStorage').addEventListener('click', () => {
+            if (window.confirm('Você realmente deseja limpar os dados armazenados?')) {
+                localStorage.clear();
+                document.getElementById('email').value = '';
+                document.getElementById('fname').value = '';
+                document.getElementById('lname').value = '';
+                alert('Todos os dados foram limpos.');
+            }
+        });
+    </script>
+</body>
+</html>
